@@ -98,7 +98,7 @@ class Server
       @folder.bufferClear(data.path)
 
     @browserManager.on 'stylesheet:resolve', (data, callback) =>
-      match = helpers.pickBestFileForHref(data.href, _.keys(@folder.files))
+      match = helpers.pickBestFileForHref((data.takanaHref || data.href), _.keys(@folder.files))
 
       if typeof(match) == 'string'
         @logger.info 'matched', data.href, '---->', match
